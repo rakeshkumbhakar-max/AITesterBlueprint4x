@@ -1,2 +1,2 @@
 # AI-Driven-Testing-Lab
-Learning and implementing Generative AI, AI Automation, AI Agents, MCP, API Testing, and AI-driven testing practices for software quality assurance.
+Learning and implementing Generative AI, Prompt Engineer AI Automation, AI Agents, RAG, n8n,  MCP, and AI-driven testing practices for software quality assurance.
