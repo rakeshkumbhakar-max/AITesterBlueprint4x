@@ -1,2 +1,3 @@
-# AI Tester Blueprint 4x 
-Learning and implementing Generative AI, Prompt Engineer AI Automation, AI Agents, RAG, n8n,  MCP, and AI-driven testing practices for software quality assurance.
+# AI Testing Blueprint 4X
+
+Blank project. Add description, setup instructions, and usage details here.
