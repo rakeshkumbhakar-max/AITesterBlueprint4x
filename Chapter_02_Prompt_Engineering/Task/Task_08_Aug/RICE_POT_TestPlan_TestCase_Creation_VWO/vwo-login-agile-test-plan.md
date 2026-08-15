@@ -3,12 +3,12 @@
 | Field | Value |
 |---|---|
 | **Project / Product Name** | VWO — Login Functionality |
-| **Release / Sprint** | [Not Verifiable] |
-| **Version** | [Not Verifiable] |
-| **Prepared By** | [Not Verifiable] |
-| **Date** | [Not Verifiable] |
+| **Release / Sprint** | [N/A — Standalone QA Test Exercise] |
+| **Version** | [1.0] |
+| **Prepared By** | [Rakesh Kumbhakar] |
+| **Date** | [14-Aug-2026] |
 
-> **Grounding note:** Only the login page controls listed in the task brief are treated as confirmed. All other behaviors, rules, limits, and project data are marked **[Dependency]**, **[Assumption]**, or **[Not Verifiable]**. No real credentials, tokens, or sensitive data are included.
+> **Documentation Note:** This Test Plan defines the QA approach for the VWO Login functionality within the stated scope. Application behavior, validation rules, and environment-specific details will be verified during test execution against the applicable application and requirements.
 
 ---
 
@@ -16,7 +16,8 @@
 
 - **What is being tested:** The VWO login functionality at https://app.vwo.com/#/login — all visible login controls and sign-in methods: Email/Password, password visibility, Remember Me, Forgot Password, Sign In, Sign in with Google, Sign in using SSO, Sign in with Passkey, and the "New to Wingify — Start a free trial" link.
 - **Why testing is required:** Login is the entry point to the application; a defect here blocks all users and is the primary target of credential attacks. It is a high-risk, high-impact control point.
-- **Testing objective:** Validate the login experience end-to-end — functional, authentication, security, UI/usability, accessibility, compatibility, and regression — using risk-based, execution-oriented testing. Actual application behavior is the source of truth; anything unverifiable is explicitly marked, never assumed as fact.
+- **Testing Objective:** Validate the VWO Login experience through functional, positive, negative, validation, authentication, security, session, UI/usability, accessibility, compatibility, and regression testing using a risk-based testing approach.
+- **Testing Approach:** Verify the defined login functionality against the approved scope and actual application behavior. Application-specific requirements, validation rules, error messages, and security controls will be validated during test execution rather than assumed.
 
 ---
 
@@ -27,7 +28,7 @@
 | Feature / Functionality | Description | Priority |
 |---|---|---|
 | Email / Password login | Valid and invalid credential combinations, field validation, error handling | High |
-| Password visibility | Toggle to reveal/hide password input **[Assumption — toggle presence to be verified]** | High |
+| Password visibility | Toggle to reveal/hide password input | High |
 | Remember Me | Session persistence behavior with and without the option selected | Medium |
 | Forgot Password | Link navigation and reset flow behavior | High |
 | Sign In | Form submission, loading states, error handling, post-login navigation | High |
@@ -59,23 +60,23 @@
 
 ## 3. Test Approach / Strategy
 
-Risk-based, execution-oriented manual testing with the live application as the primary source of truth; behaviors that cannot be verified are marked **[Dependency]** / **[Assumption]**.
+Risk-based, execution-oriented testing will be used to validate the login functionality within the approved scope. Actual application behavior and approved requirements will be used as the basis for expected results.
 
 | Area | Approach |
 |---|---|
 | Test levels | Component/system-level functional verification of the login page; smoke/sanity at the start of execution, regression at the end and after fixes |
 | Manual vs Automation | Manual execution; automation **[Dependency]** — if automation is introduced, critical login flows (valid/invalid login, blank-field validation, Forgot Password navigation) are the first candidates |
 | Functional | Verify every in-scope control and sign-in flow, positive and negative |
-| Authentication | Email/password, Google, SSO, Passkey, MFA/OTP if applicable **[Assumption]**, account status handling (disabled/deleted **[Assumption]**) |
+| Authentication | Email/password, Google, SSO, and Passkey authentication within the approved scope |
 | Authorization / Access Control | Post-login access is out of scope; on the login page, verify unauthenticated users cannot bypass login to reach protected content |
 | Security | Generic error consistency (no enumeration), password masking, no plaintext credentials in DOM/URL/storage, repeated-failure handling, no sensitive data in URLs |
 | UI / Usability | Visual consistency, responsive layout, keyboard navigation, Enter submit |
-| Accessibility | Keyboard-only operation, accessible names via the DevTools AX tree; full WCAG audit **[Dependency]** |
-| Compatibility | Same flows across Chrome, Firefox, Edge, Safari and desktop/tablet/mobile viewports **[Assumption]** |
+| Accessibility | Keyboard-only operation, focus behavior, accessible names/labels, and applicable accessibility checks |
+| Compatibility | Same flows across Chrome, Firefox, Edge, Safari |
 | Regression | Critical login suite re-run on each build/change; scope and frequency per Section 10 |
 | Smoke / Sanity | Critical paths (valid login, invalid login, blank validation, Forgot Password, presence of all sign-in options) before deeper testing |
 | Exploratory | Ad-hoc testing of edge cases (paste, autofill, tab behavior, multiple tabs); findings logged as defects with repro steps |
-| Tools | Browser DevTools (Network, Application/Storage, AX tree) for verification; no external test tooling confirmed |
+| Tools | Browser DevTools for Network, Application/Storage, and accessibility verification; applicable test and defect management tools |
 
 ---
 
@@ -83,12 +84,12 @@ Risk-based, execution-oriented manual testing with the live application as the p
 
 | Item | Details |
 |---|---|
-| Application URL | https://app.vwo.com/#/login (live application) |
-| Test environment | Live production application **[Dependency — no separate QA/test environment confirmed]** |
-| Browsers / devices | Chrome, Firefox, Edge, Safari (latest stable) **[Assumption]**; desktop (1920×1080, 1366×768), tablet (768×1024), mobile (375×667) **[Assumption]** |
-| Test data | Placeholders only: valid test account (e.g., `qa.user@example.com` / `Placeholder@123`), unregistered email, invalid email formats, SSO/passkey/MFA-enabled accounts **[Dependency — provisioning required]** |
-| Tools | Browser DevTools (Network, Application/Storage, Accessibility tree); defect tracking tool **[Not Verifiable]** |
-| Automation / CI | **[Not Verifiable]** — no automation framework or CI tooling confirmed |
+| Application URL | https://app.vwo.com/#/login  |
+| Test Environment | Web application accessed through the provided VWO Login URL |
+| Browsers / Devices | Chrome, Firefox, Edge, Safari; desktop |
+| Test Data | Dedicated test accounts and representative positive/negative test data. Credentials will be stored securely and will not be committed to the repository. SSO and Passkey scenarios require appropriately configured test accounts/devices. |
+| Tools | Browser DevTools (Network, Application/Storage, Accessibility tree); applicable test and defect management tools |
+| Automation / CI | Not included in the current test cycle |
 
 ---
 
@@ -96,14 +97,17 @@ Risk-based, execution-oriented manual testing with the live application as the p
 
 **Entry Criteria**
 - VWO login page is accessible in the test environment
-- Required test accounts (valid, invalid, disabled **[Assumption]**, MFA **[Assumption]**, SSO, passkey) are provisioned **[Dependency]**
-- Test data and browser tooling available; environment stable
+- Required test accounts for valid/invalid login, Google, SSO, and Passkey scenarios are available as applicable
+- Required test data is available
+- Required browsers and test devices/viewport configurations are available
+- Test environment is accessible and reasonably stable
 
 **Exit Criteria**
 - All High-priority test cases executed; failures logged and triaged
-- All critical/major defects fixed and verified (retest passed)
+- Critical defects are resolved and verified, or formally accepted as release risks
 - No unresolved showstopper defects
 - Test coverage summary completed and reviewed
+- Blocked test scenarios and outstanding dependencies are documented and communicated
 
 ---
 
@@ -111,12 +115,12 @@ Risk-based, execution-oriented manual testing with the live application as the p
 
 | Deliverable | Status |
 |---|---|
-| Test Plan (this document) | Planned |
+| Test Plan | Ready for Review |
 | Test Scenarios / Test Cases | To be created and executed |
-| Automation scripts | **[Not Verifiable]** — no automation confirmed |
-| Defect reports | Generated from execution (no fabricated data) |
-| Test execution report | Produced at completion |
-| Test summary | Produced at completion |
+| Automation Scripts | Not included in the current test cycle |
+| Defect Reports | Created for defects identified during test execution |
+| Test Execution Report | Prepared after test execution |
+| Test Summary Report | Prepared after completion of testing |
 
 ---
 
@@ -130,7 +134,6 @@ Risk-based, execution-oriented manual testing with the live application as the p
 | Product Owner / BA | Requirement clarification and priority decisions |
 | Scrum Master | Coordination, removal of blockers |
 
-**[Not Verifiable]** — named individuals and team assignments are not confirmed.
 
 ---
 
@@ -138,13 +141,13 @@ Risk-based, execution-oriented manual testing with the live application as the p
 
 | Risk / Dependency | Impact | Mitigation |
 |---|---|---|
-| Live production app may change without notice | Test results may not reflect the latest build | Treat the live app as source of truth; capture actual behavior and message text at execution |
-| No separate QA environment confirmed **[Dependency]** | Cannot isolate test data or destructive scenarios | Use placeholder/test accounts only; avoid destructive actions |
-| SSO, Passkey, and MFA flows require enterprise provisioning **[Dependency]** | Cannot verify without a configured tenant/device | Verify on provisioned accounts; otherwise mark scenarios as Not Verifiable |
+| Application changes during testing | Test results may become outdated or impacted by changes | Confirm the application version/build where applicable and re-execute impacted scenarios after changes |
+| Test environment availability | Testing may be blocked or test data may not be isolated | Use the designated test environment and dedicated test accounts where available |
+| SSO and Passkey configuration | SSO or Passkey scenarios may be blocked without required account/device configuration | Execute these scenarios using appropriately configured test accounts and supported devices |
 | Field limits, validation rules, lockout thresholds, and session timeouts not specified | Expected results cannot be predefined | Record actual values at execution and flag as Dependencies |
 | Repeated failed logins may trigger rate limiting / lockout | Test accounts may be temporarily blocked | Space out attempts; use multiple test accounts |
 | Bot detection / CAPTCHA may interrupt sessions | Automated steps fail | Handle manually; document observed behavior |
-| No defect tracking or CI tooling confirmed **[Not Verifiable]** | Workflow overhead | Define minimal tracking (e.g., project issue board) at kickoff |
+
 
 ---
 
@@ -167,8 +170,8 @@ Risk-based, execution-oriented manual testing with the live application as the p
 | Area | Details |
 |---|---|
 | Regression scope | All in-scope login flows; critical focus on valid/invalid login, blank-field validation, Forgot Password navigation, presence and entry of all sign-in methods, Remember Me, and session behavior |
-| Frequency | On each build/change affecting login or auth, and before release; smoke suite before every deeper cycle **[Dependency — build cadence not confirmed]** |
-| Manual vs automated | Manual regression **[Assumption]**; automation to be evaluated **[Dependency]** |
+| Frequency | Execute regression after changes affecting login or authentication functionality and before release |
+| Execution Approach | Regression may be executed manually or through approved automation; critical scenarios should be prioritized for automation where automation is available |
 | Critical login functionality included | Yes — valid login, invalid credentials, blank mandatory fields, Forgot Password, Google/SSO/Passkey entry points, Remember Me persistence, logout invalidation |
 
 ---
@@ -191,11 +194,20 @@ Metrics to be captured at completion (not populated — no fabricated results):
 
 ---
 
-## 12. Requirements Traceability
+### 12. Requirements Traceability
 
-Traceability will follow: **Requirement → Test Scenario → Test Case → Defect**.
+Requirements will be traced through the following relationship:
 
-Complete RTM cannot be established: formal requirements and sprint documentation are **[Not Verifiable]**. Requirement identifiers will be mapped to test scenarios/cases during execution once the requirements baseline is confirmed.
+**Requirement → Test Scenario → Test Case → Defect**
+
+| **Traceability Item** | **Approach** |
+|---|---|
+| Requirement Source | Approved product requirements, user stories, acceptance criteria, and applicable specifications |
+| Requirement Identification | Use approved requirement or user-story IDs where available |
+| Test Scenario Mapping | Map each applicable requirement to one or more test scenarios |
+| Test Case Mapping | Map test scenarios to executable test cases |
+| Defect Mapping | Link defects to the affected test case and requirement where applicable |
+| Coverage Review | Review requirement coverage before test completion and release sign-off |
 
 ---
 
