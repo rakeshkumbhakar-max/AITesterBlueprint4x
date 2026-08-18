@@ -3,10 +3,10 @@
 | Field | Value |
 |---|---|
 | **Project / Product Name** | VWO — Login Functionality |
-| **Release / Sprint** | [N/A — Standalone QA Test Exercise] |
-| **Version** | [1.0] |
-| **Prepared By** | [Rakesh Kumbhakar] |
-| **Date** | [14-Aug-2026] |
+| **Release / Sprint** | N/A — Standalone QA Test Exercise |
+| **Version** | 1.0 |
+| **Prepared By** | Rakesh Kumbhakar |
+| **Date** | 14-Aug-2026 |
 
 > **Documentation Note:** This Test Plan defines the QA approach for the VWO Login functionality within the stated scope. Application behavior, validation rules, and environment-specific details will be verified during test execution against the applicable application and requirements.
 

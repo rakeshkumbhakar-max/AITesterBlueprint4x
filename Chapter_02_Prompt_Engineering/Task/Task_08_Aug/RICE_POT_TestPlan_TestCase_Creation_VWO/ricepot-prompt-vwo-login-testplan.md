@@ -1,136 +1,172 @@
-## RICE POT Prompt– VWO Login Test Plan & Test Case Creation
+>> RICEPOT – VWO LOGIN TEST PLAN CREATION
 
-R → ROLE : You are a Senior QA Test Lead with 15+ years of experience in Web Application Testing, Functional Testing, Negative Testing, UI Testing, Authentication, Security, Regression Testing, and Agile/Scrum. Create an industry-level Test Plan and comprehensive Test Cases for the VWO Login page.
-I → INSTRUCTIONS
+ROLE:
+You are a Senior QA Test Lead with 15+ years of experience in Web Application Testing, Agile/Scrum, Functional Testing, Security Testing, Regression Testing, Test Strategy, Risk Management, and QA Documentation.
+Create an industry-level Agile Test Plan for the VWO Login functionality.
+The Test Plan should be professional, concise, risk-based, and execution-oriented, suitable for QA review and project documentation.
+INSTRACTIONS:
+Create the Test Plan for:
+Application: VWO
+Functionality: Login
+URL: https://app.vwo.com/#/login
+Consider the login functionality and applicable authentication methods visible/verifiable in the application, including:
+•	Email / Password 
+•	Password visibility 
+•	Remember Me 
+•	Forgot Password 
+•	Sign In 
+•	Google Login 
+•	SSO Login 
+•	Passkey Login 
+•	New to Wingifly- Start a free trial
+•	By continuing, you agree to Wingify's Privacy policy & Terms.
 
-• Analyze the VWO Login page: https://app.vwo.com/#/login
-• Identify all visible controls and applicable login functionality.
-• Cover positive, negative, boundary, validation, UI, authentication, security, session, usability, accessibility, and regression scenarios.
-• Cover:
-  - Email
-  - Password
-  - Password visibility
-  - Forgot Password
-  - Remember Me
-  - Sign In
-  - Sign in with Google
-  - Sign in using SSO
-  - Sign in with Passkey
-• [Mandatory] Verify mandatory fields, invalid inputs, valid/invalid credentials, error handling, navigation, and access control.
-• [Don't] Do not invent validation messages, business rules, field limits, or application behavior.
-• [Critical] If functionality cannot be verified, clearly mark it as an assumption or dependency.
-• Avoid duplicate or redundant test cases.
-• Each test case must be independent, executable, and have a clear expected result.
-• Use realistic test data and placeholders for credentials.
-• [Don't] Do not expose passwords, tokens, or other sensitive information.
+Cover the relevant:
+•	Functional Testing 
+•	Authentication 
+•	Authorization / Access Control 
+•	Security 
+•	UI / Usability 
+•	Accessibility 
+•	Compatibility 
+•	Regression 
+•	Smoke / Sanity 
+•	Exploratory Testing 
+[Don't] Do not invent or assume VWO-specific requirements, business rules, validation rules, security controls, authentication mechanisms, session rules, browser support, SLAs, timelines, or project information.
+[Don't] Do not invent team members, tools, environments, defect thresholds, test data, acceptance criteria, or sign-off authorities.
+[Don't] Treat generic QA best practices as confirmed VWO requirements.
+[Critical] Treat the actual application behavior and verified project information as the source of truth.
+[Critical] If required information is unavailable, clearly mark it as [Dependency], [Assumption], or [Not Verifiable] instead of guessing.
+[Don't] Fabricate test execution results, defect statistics, pass/fail metrics, or QA status.
+[Don't] include passwords, tokens, API keys, or other sensitive information.
+Keep the Test Plan concise and avoid unnecessary repetition.
 
-C → CONTEXT
+CONTEXT: 
+This is an Agile QA Test Plan for the VWO Login functionality.
+The purpose is to define the overall testing approach, scope, environment, criteria, deliverables, responsibilities, risks, defect management, regression strategy, and QA completion/sign-off approach.
+The Test Plan should follow an Agile/Scrum-oriented structure and remain suitable for a sprint/release-level testing activity.
+If formal project requirements or sprint information are unavailable, do not create fictional project details. The provided screenshot should be used as a reference for the Login page UI and available controls, while the actual application behavior should be treated as the primary source of truth.
 
-You are creating an industry-level Test Plan and Test Cases for the VWO Login page at https://app.vwo.com/#/login. The VWO Login page is an authentication interface that provides users with multiple methods to access the VWO application. The objective is to validate the complete login experience from a functional, security, and user perspective. The provided screenshot should be used as a reference for the Login page UI and available controls, while the actual application behavior should be treated as the primary source of truth.
-E → EXAMPLE
-•	Test Case Format
+EXAMPLE:
+Use the following structure and level of detail as the reference:
+Project / Product Name:
+Release / Sprint:
+Version:
+Prepared By:
+Date:
+1. Test Plan Overview
+Briefly describe:
+•	What is being tested 
+•	Why testing is required 
+•	Testing objective 
+2. Scope
+2.1 Features / Functionality to be Tested
+Feature / Functionality	Description	Priority
+2.2 Out of Scope
+Clearly identify functionality not covered by this Test Plan.
+3. Test Approach / Strategy
+Cover:
+•	Test levels 
+•	Manual vs Automation approach 
+•	Functional testing 
+•	Regression 
+•	Smoke/Sanity 
+•	Exploratory 
+•	Security 
+•	Accessibility 
+•	Compatibility 
+4. Test Environment
+Include:
+•	Test environment 
+•	Browsers/devices 
+•	Test data 
+•	Tools 
+•	Defect tracking 
+•	Automation/CI tools where applicable 
+5. Entry & Exit Criteria
+Define practical Agile testing entry and exit criteria.
+6. Test Deliverables
+Include applicable deliverables such as:
+•	Test Plan 
+•	Test Scenarios/Test Cases 
+•	Automation scripts 
+•	Defect reports 
+•	Test execution report 
+•	Test summary 
+7. Roles & Responsibilities
+Role	Responsibility
+8. Risks & Dependencies
+Risk / Dependency	Impact	Mitigation
+9. Defect Management
+Define:
+•	Defect logging 
+•	Severity/Priority 
+•	Triage 
+•	Retesting 
+•	Regression 
+•	Closure/Reopening 
+•	Criteria for blocking QA sign-off 
+Do not invent project-specific SLAs.
+10. Regression Strategy
+Define:
+•	Regression scope 
+•	Frequency 
+•	Manual vs automated coverage 
+•	Critical login functionality included in regression 
+11. Test Summary
+Define the metrics that will be captured at test completion:
+•	Total test cases 
+•	Executed 
+•	Passed 
+•	Failed 
+•	Blocked 
+•	Defects found 
+•	Defects fixed 
+•	Defects deferred 
+•	Overall QA status 
+Do not populate these with fabricated results.
+12. Requirements Traceability
+Define how requirements will be traced to testing.
+Use:
+Requirement → Test Scenario → Test Case → Defect
+If formal requirements are unavailable, state that a complete RTM cannot be established.
+13. Sign-off
+Role	Status	Date	Notes
+Do not invent names or approval status.
 
-TID	Category	Description	Pre-conditions	Steps	Expected	Priority
-VWO-TC-001	Functional	Verify login with valid credentials	Valid account exists	1. Open the login page.2. Enter valid email and password.3. Click Sign In.	User is successfully authenticated and redirected to the appropriate page.	High
-VWO-TC-002	Validation	Verify login with blank Email	Login page is displayed	1. Leave Email blank.2. Enter a valid password.3. Click Sign In.	Appropriate validation is displayed and login is not successful.	High
 
-Use this exact format for all test cases.
+PARAMETERS:  
+Generate one concise industry-level Agile Test Plan.
+The Test Plan must:
+•	Be risk-based 
+•	Be practical and execution-oriented 
+•	Avoid duplicate information 
+•	Clearly distinguish confirmed information from assumptions/dependencies 
+•	Cover the complete QA lifecycle for the login functionality 
+•	Follow the structure provided in the Example 
+•	Be suitable for a sprint or release 
+•	Avoid unnecessary generic QA explanations 
+Target length: approximately 2-3 pages of structured content, excluding tables where necessary.
 
-P → PARAMETERS
+OUTPUT
+Generate only the Test Plan in the following order:
+1.	Test Plan Overview 
+2.	Scope 
+o	In-Scope 
+o	Out-of-Scope 
+3.	Test Approach / Strategy 
+4.	Test Environment 
+5.	Entry & Exit Criteria 
+6.	Test Deliverables 
+7.	Roles & Responsibilities 
+8.	Risks & Dependencies 
+9.	Defect Management 
+10.	Regression Strategy 
+11.	Test Summary 
+12.	Requirements Traceability 
+13.	Sign-off 
+Use professional tables where they improve clarity.
 
-•	Generate:
-
-- 1 Test Plan
-- Comprehensive Test Scenarios
-- Detailed Test Cases
-- Test Coverage Summary
-
-•	Test cases must cover:
-
-- Positive Testing
-- Negative Testing
-- Boundary & Validation Testing
-- Functional Testing
-- UI Testing
-- Authentication Testing
-- Authorization/Security Testing
-- Session Testing
-- Forgot Password
-- Remember Me
-- Google Login
-- SSO Login
-- Passkey Login
-- Cross-Browser Testing
-- Accessibility/Usability
-- Regression Testing
-
-•	Prioritize each test case as:
-
-- High
-- Medium
-- Low
-
-Target approximately 30–50 meaningful test cases. Prioritize coverage and quality over quantity.
-
-O → OUTPUT
-
-•	Generate the output in the following order:
-
-1. TEST PLAN
-
-Include only:
-
-- Objective
-- Scope
-- In-Scope
-- Out-of-Scope
-- Test Strategy
-- Test Types
-- Test Environment
-- Test Data
-- Entry Criteria
-- Exit Criteria
-- Risks & Mitigation
-- Assumptions/Dependencies
-
-2. TEST SCENARIOS
-
-•	Provide a concise table:
-
-| SID | Category | Test Scenario | Priority |
-
-3. TEST CASES
-
-•	Use exactly this format:
-
-| TID | Category | Description | Pre-conditions | Steps | Expected | Priority |
-
-•	Do not add or remove columns.
-
-•	Steps must be numbered within the table cell.
-
-4. TEST COVERAGE SUMMARY
-
-•	Summarize coverage for:
-
-- Functional
-- Positive
-- Negative
-- Validation
-- Authentication
-- Security
-- Session
-- UI/Usability
-- Accessibility
-- Compatibility
-- Regression
-
-T → TONE
-
-Technical, concise, precise, professional, and industry-level QA/Test Lead standard.
-
-Do not provide chain-of-thought or internal reasoning.
-
-Do not provide unnecessary explanations.
-
-Generate only the requested Test Plan, Test Scenarios, Test Cases, and Test Coverage Summary.
+TONE
+Use a technical, concise, professional, objective, risk-based Senior QA/Test Lead tone.
+Keep the document clear, practical, and industry-standard, with no unnecessary explanations or generic QA theory.
